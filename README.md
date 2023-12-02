@@ -52,7 +52,7 @@ The **question marks** in the dataset indicate missing values that can possibly 
 
 ### 4.1. Identify the missing values
 
-For ease of computational speed and convenience, all question marks "?" will be replaced with NaN (Not a Number), which is Python's default missing value marker. We will use the following function to carry out this replacement. 
+For ease of computational speed and convenience, all question marks "?" will be replaced with NaN (Not a Number), which is Python's default missing-value marker. We will use the following function to carry out this replacement. 
 
 The python's library that is going to be used is [numpy](https://numpy.org/), a library that allows for the handling of extensive, multi-dimensional arrays and matrices, as well as a vast assortment of advanced mathematical functions that work with these arrays and matrices.
 
@@ -403,7 +403,7 @@ plt.pyplot.title("Horsepower Bins")
 
 <img width="658" alt="24" src="https://github.com/nsuhud/data_wrangling/assets/72127249/d8bc64cb-a431-4fcb-b870-ab88054a68d6">
 
-Here, we would like to create three equal-sized bins to analyse the distribution of horsepower in a dataset. We will use NumPy's **linspace** function, setting the start and end values to include the dataset's minimum and maximum values.
+Here, we would like to create three equal-sized bins to analyse the distribution of horsepower in a dataset. We will use NumPy's `linspace` function, setting the start and end values to include the dataset's minimum and maximum values.
 
 For our specific case of building three bins, we need four dividers, so we set `numbers_generated` to 4.
 
