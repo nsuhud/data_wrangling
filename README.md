@@ -74,7 +74,7 @@ After running the codes above, all question marks should have been substituted w
     <li><b>.notnull()</b></li>
 </ol>
     
-The output of this function will be a boolean value of "True" or "False", where **True** indicates a missing value, and **False** shows a value present in the dataset.
+The output of this function will be a boolean value of **True** or **False**, where **True** indicates a missing value, and **False** shows a value present in the dataset.
 
 ```python
 missing_data = df.isnull()
@@ -84,7 +84,7 @@ missing_data.head(5)
 <img width="1101" alt="3" src="https://github.com/nsuhud/data_wrangling/assets/72127249/40ed0e41-0fd2-4879-9233-116b628cf7f0">
 
 ### 4.3. Count missing values
-Using a Python for loop, we can easily count the missing values in each column. The "value_counts()" method within the loop tallies the occurrences of "True" values.
+Using a Python for loop, we can easily count the missing values in each column. The `value_counts()` method within the loop tallies the occurrences of **True** values.
 
 ```python
 for column in missing_data.columns.values.tolist():
@@ -97,24 +97,24 @@ for column in missing_data.columns.values.tolist():
 
 Based on the summary, there are 205 data rows in each column, and seven columns have data that is incomplete.
 
-1. normalized-losses: 41 missing data
-2. num-of-doors: 2 missing data
-3. bore: 4 missing data
-4. stroke : 4 missing data
-5. horsepower: 2 missing data
-6. peak-rpm: 2 missing data
-7. price: 4 missing data
+1. **normalized-losses**: 41 missing data
+2. **num-of-doors**: 2 missing data
+3. **bore**: 4 missing data
+4. **stroke**: 4 missing data
+5. **horsepower**: 2 missing data
+6. **peak-rpm**: 2 missing data
+7. **price**: 4 missing data
 
 ### 4.4. Resolving missing values
 Generally, there are two methods to resolve missing values:
 <ol>
-    <li>Drop the value/data<br>
+    <li><b>Drop the value/data</b><br>
         a. Drop the entire column<br>
         b. Drop the whole row
     </li>
-    <li>Replace the value/data<br>
+    <li><b>Replace the value/data</b><br>
         a. Replace it by mean<br>
-        b. Replace it by mode (frequent value/data)
+        b. Replace it by mode (frequent value/data)<br>
         c. Replace it based on other functions
     </li>
 </ol>
@@ -123,23 +123,23 @@ The option to drop the entire column can be chosen if most entries, values or da
 
 <b>Replace by mean:</b>
 <ul>
-    <li>"normalized-losses": 41 missing data, replace them with the mean</li>
-    <li>"stroke": 4 missing data, replace them with the mean</li>
-    <li>"bore": 4 missing data, replace them with the mean</li>
-    <li>"horsepower": 2 missing data, replace them with the mean</li>
-    <li>"peak-rpm": 2 missing data, replace them with the mean</li>
+    <li><b>normalized-losses</b>: 41 missing data, replace them with the mean</li>
+    <li><b>stroke</b>: 4 missing data, replace them with the mean</li>
+    <li><b>bore</b>: 4 missing data, replace them with the mean</li>
+    <li><b>horsepower</b>: 2 missing data, replace them with the mean</li>
+    <li><b>peak-rpm</b>: 2 missing data, replace them with the mean</li>
 </ul>
 
 <b>Replace by mode:</b>
 <ul>
-    <li>"num-of-doors": 2 missing data, replace them with the mode</li>
-    <ul>Reason: With 84% of sedans featuring four doors, the four-door configuration is the most commong among sedans (mode), making it more likely to occur.</ul>
+    <li><b>num-of-doors</b>: 2 missing data, replace them with the mode</li>
+    <ul><u>Reason</u>: With 84% of sedans featuring four doors, the four-door configuration is the most commong among sedans (mode), making it more likely to occur.</ul>
 </ul>
 
 <b>Drop the whole role:</b>
 <ul>
-    <li>"price": 4 missing data, delete the row</li>
-    <ul>Reason: Price is what we want to predict. Any data entry without price data cannot be used for prediction; therefore, any row without price data is not useful to us.</ul>
+    <li><b>price</b>: 4 missing data, delete the row</li>
+    <ul><u>Reason</u>: Price is what we want to predict. Any data entry without price data cannot be used for prediction; therefore, any row without price data is not useful to us.</ul>
 </ul>
 
 #### 4.4.1. Replace missing values with the mean value
@@ -147,7 +147,7 @@ The option to drop the entire column can be chosen if most entries, values or da
 
 We set axis = 0 to get the **mean** of all rows for each column (moving row-wise).
 
-To ensure that all data in the column "normalized-losses' are of a float data type (retaining decimals and integers), we use the `astype()` method for conversion.
+To ensure that all data in the column "normalized-losses" are of a float data type (retaining decimals and integers), we use the `astype()` method for conversion.
 
 ```python
 avg_norm_loss = df["normalized-losses"].astype("float").mean(axis = 0)
@@ -255,7 +255,7 @@ df["num-of-doors"].value_counts()
 
 <img width="326" alt="15" src="https://github.com/nsuhud/data_wrangling/assets/72127249/313b4d1a-23ba-46d2-8eae-761037d59e61">
 
-We can see that four doors are the most common type. To generate the most frequent value, we can also use the idxmax() method. The idxmax() method is used to find the index (row label) of the maximum value in a pandas Series or DataFrame.
+We can see that four doors are the most common type. To generate the most frequent value, we can also use the `idxmax()` method. The `idxmax()` method is used to find the index (row label) of the maximum value in a pandas Series or DataFrame.
 
 ```python
 df["num-of-doors"].value_counts().idxmax()
@@ -298,11 +298,11 @@ df.dtypes
 
 <img width="301" alt="19" src="https://github.com/nsuhud/data_wrangling/assets/72127249/7e54cd35-77c0-4649-81cc-bde008aa4bab">
 
-Above, certain columns have incorrect data types. Numerical variables should be 'float' or 'int', while those with string values, such as categories, should be 'object'. 
+Above, certain columns have incorrect data types. Numerical variables should be **float** or **int**, while those with string values, such as categories, should be **object**. 
 
-For example, the parameter 'bore' and 'stroke', 'price', and 'peak-rpm' should be numeric types or 'float', but they are currently 'object'. While 'normalized-losses' should be 'int'.
+For example, the parameter "bore" and "stroke", "price", and "peak-rpm" should be numeric types or **float**, but they are currently **object**. While "normalized-losses" should be **int**.
 
-To resolve this, we'll use the astype() method to convert data types as needed.
+To resolve this, we'll use the `astype()` method to convert data types as needed.
 
 ```python
 df[["bore", "stroke", "price", "peak-rpm"]] = df[["bore", "stroke", "price", "peak-rpm"]].astype("float")
@@ -403,7 +403,7 @@ plt.pyplot.title("Horsepower Bins")
 
 <img width="658" alt="24" src="https://github.com/nsuhud/data_wrangling/assets/72127249/d8bc64cb-a431-4fcb-b870-ab88054a68d6">
 
-Here, we would like to create three equal-sized bins to analyse the distribution of horsepower in a dataset. We will use NumPy's linspace function, setting the start and end values to include the dataset's minimum and maximum values.
+Here, we would like to create three equal-sized bins to analyse the distribution of horsepower in a dataset. We will use NumPy's **linspace** function, setting the start and end values to include the dataset's minimum and maximum values.
 
 For our specific case of building three bins, we need four dividers, so we set `numbers_generated` to 4.
 
@@ -465,7 +465,7 @@ A dummy variable, also known as indicator variable, is a numerical representatio
 
 The purpose of using indicator variables is to facilitate the use of categorical variables for regression analysis. For our dataset, we will generate dummy variables for two columns with categorical data: fuel-type and aspiration. 
 
-We will use the get_dummies method from the Pandas library to generate dummy variables and assign them to different categories of fuel types and aspiration. Let's first create dummy variables for fuel types.
+We will use the `get_dummies` method from the Pandas library to generate dummy variables and assign them to different categories of fuel types and aspiration. Let's first create dummy variables for fuel types.
 
 ```python
 #1. Generate the dummy variables and assign them to dataframe "dummy_variable_1":
